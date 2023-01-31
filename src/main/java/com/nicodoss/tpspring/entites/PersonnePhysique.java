@@ -10,17 +10,15 @@ import java.util.List;
 
 import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.USE_NULL;
 
-@Table(name="T_PersonnePhysique")
+@Table(name="T_PersonnePhysique",schema = "OUVERTURE")
 @Entity @NoArgsConstructor @AllArgsConstructor @Data
 @DiscriminatorValue("PH")
 public class PersonnePhysique extends Personne{
     private String nom;
     private String prenoms;
     @OneToOne
-    @Column(name = "paysNaissance")
     private Pays paysNaissance;
     @OneToOne
-    @Column(name = "paysResidence")
     private Pays paysResidence;
     @Column(name = "lieuNaissance")
     private String lieuNaissance;

@@ -8,7 +8,7 @@ import java.util.List;
 public class Adresse {
 private String boitePostale;
 private String rueAdresse;
-private List<String> tel;
+private String tel;
 private String email;
 private String ville;
 private String itineraire;

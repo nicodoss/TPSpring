@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_Pays")
+@Table(name="T_Pays",schema = "OUVERTURE")
 public class Pays {
     @Id @Column(name="codePays",length = 20)
     private String codePays;

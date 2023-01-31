@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+@Entity
 @NoArgsConstructor @AllArgsConstructor @Data
 @DiscriminatorValue("PM")
-@Table(name="T_PersonneMorale")
+@Table(name="T_PersonneMorale",schema = "OUVERTURE")
 public class PersonneMorale extends Personne{
     private String numeroAgrement;
     private String numeroInsae;
