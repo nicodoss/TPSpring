@@ -14,13 +14,15 @@ import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.
 @Entity @NoArgsConstructor @AllArgsConstructor @Data
 @DiscriminatorValue("PH")
 public class PersonnePhysique extends Personne{
+    @Column(length = 50)
     private String nom;
+    @Column(length = 50)
     private String prenoms;
     @OneToOne
     private Pays paysNaissance;
     @OneToOne
     private Pays paysResidence;
-    @Column(name = "lieuNaissance")
+    @Column(name = "lieuNaissance",length = 50)
     private String lieuNaissance;
     @Embedded(onEmpty =  USE_NULL)
     private Adresse adresse;

@@ -11,13 +11,20 @@ import java.util.Date;
 @DiscriminatorValue("PM")
 @Table(name="T_PersonneMorale",schema = "OUVERTURE")
 public class PersonneMorale extends Personne{
+    @Column(length = 100)
     private String numeroAgrement;
+    @Column(length = 100)
     private String numeroInsae;
-    private String capitalSocial;
+    private long
+            capitalSocial;
+    @Column(length = 100)
     private String siglePersonneMorale;
+    @Column(length = 100)
     private String libelleFormeJuridique;
+    @Column(length = 100)
     private String raisonSociale;
     private boolean estActifPersonne;
+    @Column(length = 10)
     private String codeLangue;
     @Temporal(TemporalType.DATE)
     private Date dateCreationServeur;
