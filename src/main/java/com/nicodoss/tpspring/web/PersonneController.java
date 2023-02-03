@@ -1,6 +1,10 @@
 package com.nicodoss.tpspring.web;
 
 import com.nicodoss.tpspring.entites.Personne;
+import com.nicodoss.tpspring.entites.PersonneMorale;
+import com.nicodoss.tpspring.entites.PersonnePhysique;
+import com.nicodoss.tpspring.enums.TypePersonne;
+import com.nicodoss.tpspring.repositories.PersonneRepository;
 import com.nicodoss.tpspring.services.PersonneService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,15 +20,21 @@ import java.util.List;
 @AllArgsConstructor
 
 public class PersonneController {
+
     private PersonneService personneService;
 
-    @GetMapping(path = "/personnes")
+    @GetMapping(path = "/person_PH")
     public List<Personne>ListePersonnePhysique( ){
-      return   personneService.ListePersonne();
+        return   personneService.ListePersonne(TypePersonne.PHYSIQUE);
     }
 
-    @PostMapping("/personnes")
+    @PostMapping("/CreatePers")
     public Personne personne (@RequestBody Personne personne){
-      return personneService.SavePersonne(personne);
+        return personneService.SavePersonne(personne);
+
     }
+//    @PostMapping()
+//    public Personne personne (@RequestBody PersonneMorale personne){
+//        return personneService.SavePersonneMorale(personne);
+//    }
 }

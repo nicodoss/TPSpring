@@ -1,8 +1,11 @@
 package com.nicodoss.tpspring.repositories;
 
 import com.nicodoss.tpspring.entites.Personne;
+import com.nicodoss.tpspring.enums.TypePersonne;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PersonneRepository extends JpaRepository<Personne,Long> {
+import java.util.List;
 
+public interface PersonneRepository extends JpaRepository<Personne,Long> {
+List<Personne>findByTypePersonne(TypePersonne type);
 }

@@ -19,14 +19,16 @@ public class PersonnePhysique extends Personne{
     @Column(length = 50)
     private String prenoms;
     @OneToOne
+    @JoinColumn(name="id_pays_naissance")
     private Pays paysNaissance;
     @OneToOne
+    @JoinColumn(name="id_pays_residence")
     private Pays paysResidence;
-    @Column(name = "lieuNaissance",length = 50)
+    @Column(name = "lieu_naissance",length = 50)
     private String lieuNaissance;
     @Embedded(onEmpty =  USE_NULL)
     private Adresse adresse;
-    @Column(name = "estActifPersonne")
+    @Column(name = "estactifPersonne")
     private boolean estActifPersonne;
 
 }
