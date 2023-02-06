@@ -8,15 +8,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING,length = 2, name="Type_Personne")
+@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) @DiscriminatorColumn(name = "Type_Pers",length = 8)
 @NoArgsConstructor @AllArgsConstructor @Data
 public abstract class Personne {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id ;
     protected Date dateCreationServeur;
     @Enumerated(value = EnumType.STRING)
     protected TypePersonne typePersonne;
-    int numLigne;
+
 
 }

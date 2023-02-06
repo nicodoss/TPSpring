@@ -9,11 +9,14 @@ import java.util.List;
 
 public interface PersonneService {
 
-  Personne SavePersonnePhysique(PersonnePhysique personne);
-  Personne SavePersonneMorale(PersonneMorale personne);
-  Personne SavePersonne(Personne personne);
+  PersonnePhysique SavePersonnePhysique(PersonnePhysique personne);
+  PersonneMorale SavePersonneMorale(PersonneMorale personne);
   void DeletePersonne(Long Id);
+  void DeletePersonnePhysique(Long Id);
+  void DeletePersonneMorale(Long ID);
   Personne UpdatePersonne(Long ID,Personne personne);
+  PersonnePhysique UpdatePersonnePhysique(Long ID,PersonnePhysique personne);
+  PersonneMorale UpdatePersonneMorale(Long ID,PersonneMorale personne);
   List<Personne>ListePersonne(TypePersonne typePersonne);
   List<Personne>ListePersonneAll();
   Personne FindById(Long Id);

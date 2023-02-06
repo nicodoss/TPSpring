@@ -4,34 +4,42 @@ import com.nicodoss.tpspring.entites.Personne;
 import com.nicodoss.tpspring.entites.PersonneMorale;
 import com.nicodoss.tpspring.entites.PersonnePhysique;
 import com.nicodoss.tpspring.enums.TypePersonne;
+import com.nicodoss.tpspring.repositories.PersonneMoraleRepository;
+import com.nicodoss.tpspring.repositories.PersonnePhysiqueRepository;
 import com.nicodoss.tpspring.repositories.PersonneRepository;
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
 @Slf4j
 public class PersonneImpl implements PersonneService{
+    @Autowired
     private PersonneRepository personneRepository;
-
+    @Autowired
+    private PersonnePhysiqueRepository personnePhysiqueRepository;
+    @Autowired
+    private PersonneMoraleRepository personneMoraleRepository;
 
     @Override
-    public Personne SavePersonnePhysique(PersonnePhysique personne) {
+    public PersonnePhysique SavePersonnePhysique(PersonnePhysique pers) {
 
-        return personneRepository.save(personne);
+        return personnePhysiqueRepository.save(pers);
     }
 
     @Override
-    public Personne SavePersonneMorale(PersonneMorale personne) {
-        return personneRepository.save(personne);
+    public PersonneMorale SavePersonneMorale(PersonneMorale pers) {
+
+        return personneMoraleRepository.save(pers);
     }
 
-    @Override
+    /*@Override
     public Personne SavePersonne(Personne personne) {
 
         TypePersonne typepersonne=personne.getTypePersonne();
@@ -46,11 +54,21 @@ public class PersonneImpl implements PersonneService{
                 personneRepository.save(pm);
         }
         return personne;
-    }
+    }*/
 
     @Override
     public void DeletePersonne(Long Id) {
         personneRepository.deleteById(Id);
+    }
+
+    @Override
+    public void DeletePersonnePhysique(Long Id) {
+        personnePhysiqueRepository.deleteById(Id);
+    }
+
+    @Override
+    public void DeletePersonneMorale(Long ID) {
+        personneMoraleRepository.deleteById(ID);
     }
 
     @Override
@@ -88,12 +106,50 @@ public class PersonneImpl implements PersonneService{
     }
 
     @Override
+    public PersonnePhysique UpdatePersonnePhysique(Long ID, PersonnePhysique personne) {
+        PersonnePhysique pers=personnePhysiqueRepository.findById(ID).orElse(null);
+        if(pers!=null){
+            pers.setNom(personne.getNom());
+            pers.setAdresse(personne.getAdresse());
+            pers.setEstActifPersonne(personne.isEstActifPersonne());
+            pers.setLieuNaissance(personne.getLieuNaissance());
+            pers.setPrenoms(personne.getPrenoms());
+            pers.setPaysNaissance(personne.getPaysNaissance());
+            pers.setDateCreationServeur(personne.getDateCreationServeur());
+            pers.setPrenoms(personne.getPrenoms());
+            pers.setPaysNaissance(personne.getPaysNaissance());
+            pers.setPaysResidence(personne.getPaysResidence());
+            pers.setTypePersonne(TypePersonne.PHYSIQUE);
+        }
+
+        return pers;
+    }
+
+    @Override
+    public PersonneMorale UpdatePersonneMorale(Long ID, PersonneMorale personne) {
+        PersonneMorale pers =personneMoraleRepository.findById(ID).orElse(null);
+        if(pers!=null) {
+            pers.setSiglePersonneMorale(personne.getSiglePersonneMorale());
+            pers.setCapitalSocial(personne.getCapitalSocial());
+            pers.setLibelleFormeJuridique(personne.getLibelleFormeJuridique());
+            pers.setNumeroAgrement(personne.getNumeroAgrement());
+            pers.setPays(personne.getPays());
+            pers.setEstActifPersonne(personne.isEstActifPersonne());
+            pers.setRaisonSociale(personne.getRaisonSociale());
+            pers.setCodeLangue(personne.getCodeLangue());
+            pers.setDateCreationServeur(new Date());
+            pers.setTypePersonne(TypePersonne.MORALE);
+        }
+        return pers;
+    }
+
+    @Override
     public List<Personne> ListePersonne(TypePersonne typePersonne) {
         return personneRepository.findByTypePersonne(typePersonne);
     }
     @Override
     public List<Personne> ListePersonneAll() {
-        return null;
+        return personneRepository.findAll();
     }
 
     @Override

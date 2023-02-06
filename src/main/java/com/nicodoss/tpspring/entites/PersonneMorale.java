@@ -8,15 +8,14 @@ import javax.persistence.*;
 import java.util.Date;
 @Entity
 @NoArgsConstructor @AllArgsConstructor @Data
-@DiscriminatorValue("PM")
 @Table(name="T_PersonneMorale",schema = "OUVERTURE")
+@DiscriminatorValue("PM")
 public class PersonneMorale extends Personne{
     @Column(length = 100)
     private String numeroAgrement;
     @Column(length = 100)
     private String numeroInsae;
-    private long
-            capitalSocial;
+    private long capitalSocial;
     @Column(length = 100)
     private String siglePersonneMorale;
     @Column(length = 100)
@@ -30,4 +29,7 @@ public class PersonneMorale extends Personne{
     private Date dateCreationServeur;
     @OneToOne
     private Pays pays;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="numLigne")
+    private long numLigne;
 }
