@@ -1,8 +1,6 @@
 package com.nicodoss.tpspring.entites;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.relational.core.mapping.Embedded;
 
 import javax.persistence.*;
@@ -10,7 +8,11 @@ import javax.persistence.*;
 import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.USE_NULL;
 
 @Table(name="T_PersonnePhysique",schema = "OUVERTURE")
-@Entity @NoArgsConstructor @AllArgsConstructor @Data @DiscriminatorValue("PH")
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@DiscriminatorValue("PH")
 public class PersonnePhysique extends Personne{
     @Column(length = 50)
     private String nom;

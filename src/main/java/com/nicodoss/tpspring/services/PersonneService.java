@@ -1,5 +1,7 @@
 package com.nicodoss.tpspring.services;
 
+import com.nicodoss.tpspring.dtos.PersonneMoraleDto;
+import com.nicodoss.tpspring.dtos.PersonnePhysiqueDto;
 import com.nicodoss.tpspring.entites.Personne;
 import com.nicodoss.tpspring.entites.PersonneMorale;
 import com.nicodoss.tpspring.entites.PersonnePhysique;
@@ -9,8 +11,8 @@ import java.util.List;
 
 public interface PersonneService {
 
-  PersonnePhysique SavePersonnePhysique(PersonnePhysique personne);
-  PersonneMorale SavePersonneMorale(PersonneMorale personne);
+  PersonnePhysiqueDto SavePersonnePhysique(PersonnePhysiqueDto personne);
+  PersonneMoraleDto SavePersonneMorale(PersonneMoraleDto personne);
   void DeletePersonne(Long Id);
   void DeletePersonnePhysique(Long Id);
   void DeletePersonneMorale(Long ID);

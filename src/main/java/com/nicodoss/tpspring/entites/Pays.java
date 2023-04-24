@@ -15,6 +15,7 @@ public class Pays{
     @Id
     @Column(name="codePays",length = 20)
     private String codePays;
+    private String nomPays;
     private String libelleGeographique;
     private int tailleTel;
     private String  indicatifReseau;

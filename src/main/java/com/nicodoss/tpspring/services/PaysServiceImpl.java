@@ -1,6 +1,8 @@
 package com.nicodoss.tpspring.services;
 
+import com.nicodoss.tpspring.dtos.PaysDto;
 import com.nicodoss.tpspring.entites.Pays;
+import com.nicodoss.tpspring.mappers.PaysMappers;
 import com.nicodoss.tpspring.repositories.PaysRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,14 +16,14 @@ import javax.transaction.Transactional;
 public class PaysServiceImpl implements PaysService{
     @Autowired
     PaysRepository paysRepository ;
+    @Autowired
+    PaysMappers paysMappers;
     @Override
-    public Pays CreatePays(Pays pays) {
-        return paysRepository.save(pays);
-
+    public PaysDto CreatePays(PaysDto paysDto) {
+        return paysMappers.modelToDto(paysRepository.save(paysMappers.dtoToModel(paysDto)));
     }
-
     @Override
-    public Pays UpdatePays(String codePays, Pays pays) {
+    public PaysDto UpdatePays(String codePays, PaysDto pays) {
         return null;
     }
 }

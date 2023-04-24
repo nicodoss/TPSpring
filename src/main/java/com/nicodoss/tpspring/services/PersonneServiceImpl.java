@@ -1,9 +1,13 @@
 package com.nicodoss.tpspring.services;
 
+import com.nicodoss.tpspring.dtos.PersonneMoraleDto;
+import com.nicodoss.tpspring.dtos.PersonnePhysiqueDto;
 import com.nicodoss.tpspring.entites.Personne;
 import com.nicodoss.tpspring.entites.PersonneMorale;
 import com.nicodoss.tpspring.entites.PersonnePhysique;
 import com.nicodoss.tpspring.enums.TypePersonne;
+import com.nicodoss.tpspring.mappers.PersMorMappers;
+import com.nicodoss.tpspring.mappers.PersonnePhysMappers;
 import com.nicodoss.tpspring.repositories.PersonneMoraleRepository;
 import com.nicodoss.tpspring.repositories.PersonnePhysiqueRepository;
 import com.nicodoss.tpspring.repositories.PersonneRepository;
@@ -19,24 +23,26 @@ import java.util.List;
 @Transactional
 @AllArgsConstructor
 @Slf4j
-public class PersonneImpl implements PersonneService{
+public class PersonneServiceImpl implements PersonneService{
     @Autowired
     private PersonneRepository personneRepository;
     @Autowired
     private PersonnePhysiqueRepository personnePhysiqueRepository;
     @Autowired
     private PersonneMoraleRepository personneMoraleRepository;
-
+    @Autowired
+    private PersonnePhysMappers personnePhysMappers;
+    @Autowired
+    private PersMorMappers persMorMappers;
     @Override
-    public PersonnePhysique SavePersonnePhysique(PersonnePhysique pers) {
-
-        return personnePhysiqueRepository.save(pers);
+    public PersonnePhysiqueDto SavePersonnePhysique(PersonnePhysiqueDto pers) {
+    return personnePhysMappers.ModelToDto(personnePhysiqueRepository.save(personnePhysMappers.dtoToModel(pers)));
     }
 
     @Override
-    public PersonneMorale SavePersonneMorale(PersonneMorale pers) {
+    public PersonneMoraleDto SavePersonneMorale(PersonneMoraleDto pers) {
 
-        return personneMoraleRepository.save(pers);
+        return persMorMappers.ModelToDtos(personneMoraleRepository.save(persMorMappers.DtoToModel(pers)));
     }
 
     /*@Override
@@ -78,6 +84,7 @@ public class PersonneImpl implements PersonneService{
             TypePersonne typepersonne=pers.getTypePersonne();
             switch(typepersonne) {
                 case PHYSIQUE:
+
                     ((PersonnePhysique)pers).setNom(((PersonnePhysique)personne).getNom());
                     ((PersonnePhysique)pers).setAdresse(((PersonnePhysique)personne).getAdresse());
                     ((PersonnePhysique)pers).setEstActifPersonne(((PersonnePhysique)personne).isEstActifPersonne());

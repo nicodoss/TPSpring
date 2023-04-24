@@ -1,5 +1,7 @@
 package com.nicodoss.tpspring.web;
 
+import com.nicodoss.tpspring.dtos.PersonneMoraleDto;
+import com.nicodoss.tpspring.dtos.PersonnePhysiqueDto;
 import com.nicodoss.tpspring.entites.Personne;
 import com.nicodoss.tpspring.entites.PersonneMorale;
 import com.nicodoss.tpspring.entites.PersonnePhysique;
@@ -28,22 +30,19 @@ public class PersonneController {
 
     @GetMapping(path = "/person_PH")
     public List<Personne>ListePersonnePhysique( ){
-        return   personneService.ListePersonne(TypePersonne.PHYSIQUE);
+       return   personneService.ListePersonne(TypePersonne.PHYSIQUE);
     }
 
     @PostMapping("/CreatePersPhys")
-    public ResponseEntity<PersonnePhysique> Createpersonnephysique (@RequestBody PersonnePhysique personne){
-        PersonnePhysique pers= personneService.SavePersonnePhysique(personne);
+    public ResponseEntity<PersonnePhysiqueDto> Createpersonnephysique (@RequestBody PersonnePhysiqueDto personne){
+        PersonnePhysiqueDto pers= personneService.SavePersonnePhysique(personne);
         return ResponseEntity.status(HttpStatus.CREATED).body(pers);
 
     }
     @PostMapping("/CreatePersMorale")
-    public ResponseEntity<PersonneMorale> CreatePersonneMorale (@RequestBody PersonneMorale personne){
-        PersonneMorale pers=personneService.SavePersonneMorale(personne);
+    public ResponseEntity<PersonneMoraleDto> CreatePersonneMorale (@RequestBody PersonneMoraleDto personne){
+        PersonneMoraleDto pers=personneService.SavePersonneMorale(personne);
         return ResponseEntity.status(HttpStatus.CREATED).body(pers);
     }
-//    @PostMapping()
-//    public Personne personne (@RequestBody PersonneMorale personne){
-//        return personneService.SavePersonneMorale(personne);
-//    }
+
 }

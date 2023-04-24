@@ -2,14 +2,16 @@ package com.nicodoss.tpspring.entites;
 
 import com.nicodoss.tpspring.enums.TypePersonne;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) @DiscriminatorColumn(name = "Type_Pers",length = 8)
-@NoArgsConstructor @AllArgsConstructor @Data
+@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "Type_Pers",length = 8)
+@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public abstract class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -17,6 +19,4 @@ public abstract class Personne {
     protected Date dateCreationServeur;
     @Enumerated(value = EnumType.STRING)
     protected TypePersonne typePersonne;
-
-
 }
