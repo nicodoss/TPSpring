@@ -45,22 +45,6 @@ public class PersonneServiceImpl implements PersonneService{
         return persMorMappers.ModelToDtos(personneMoraleRepository.save(persMorMappers.DtoToModel(pers)));
     }
 
-    /*@Override
-    public Personne SavePersonne(Personne personne) {
-
-        TypePersonne typepersonne=personne.getTypePersonne();
-        System.out.println(typepersonne);
-        switch (typepersonne) {
-            case PHYSIQUE:
-                PersonnePhysique ph=(PersonnePhysique)personne;
-                personneRepository.save(ph);
-                break;
-            case MORALE:
-                PersonneMorale pm=(PersonneMorale)personne;
-                personneRepository.save(pm);
-        }
-        return personne;
-    }*/
 
     @Override
     public void DeletePersonne(Long Id) {

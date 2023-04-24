@@ -12,7 +12,7 @@ public interface CompteClientService {
     List<CompteClientDto> getAllCompteClients();
     List<CompteClientDto>getComptesByTypePersonnes(TypePersonne typePersonne);
     CompteClientDto getCompteClientById(Long id) throws CompteClientNotExistException;
-    CompteClientDto UpdateCompteClients(CompteClientDto cpte);
+    CompteClientDto UpdateCompteClients(Long id, CompteClientDto cpte) throws CompteClientNotExistException;
     void DeleteCompteClient(CompteClientDto cpte);
     CompteClientDto GetCompteClientByNumCpte(String Numcompte);
 }

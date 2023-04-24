@@ -47,8 +47,15 @@ import java.util.stream.Collectors;
     }
 
     @Override
-    public CompteClientDto UpdateCompteClients(CompteClientDto cpte) {
-        return null;
+    public CompteClientDto UpdateCompteClients(Long id, CompteClientDto cpte) throws CompteClientNotExistException {
+        CompteClient clt=compteClientRepository.findById(id).orElseThrow(()->new CompteClientNotExistException(id));
+        CompteClient cltupdate =compteClientMappers.DtoToModel(cpte);
+        clt.setIntituleCompte(cltupdate.getIntituleCompte());
+        clt.setAbrege(cltupdate.getAbrege());
+        clt.setListePersonne(cltupdate.getListePersonne());
+        clt.setTypePersonne(cltupdate.getTypePersonne());
+       return compteClientMappers.ModelToDto(compteClientRepository.save(clt));
+
     }
 
     @Override
