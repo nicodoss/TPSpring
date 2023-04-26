@@ -11,7 +11,13 @@ public class ExceptionHandlerSpring extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = { CompteClientNotExistException.class })
    public ResponseEntity<ApiError>clientNotfoundExcep(CompteClientNotExistException ex){
         return new ResponseEntity<>(new ApiError(400,ex.getMessage()),HttpStatus.NOT_FOUND);
-
     }
-
+    @ExceptionHandler(value = {PersonneNotExistException.class })
+    public ResponseEntity<ApiError>persNotfoundExcep(PersonneNotExistException ex){
+        return new ResponseEntity<>(new ApiError(400,ex.getMessage()),HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(value = {PaysNotFoundException.class })
+    public ResponseEntity<ApiError>PaysNotFoundException(PaysNotFoundException ex){
+        return new ResponseEntity<>(new ApiError(400,ex.getMessage()),HttpStatus.NOT_FOUND);
+    }
 }
