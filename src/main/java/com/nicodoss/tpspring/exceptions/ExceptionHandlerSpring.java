@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class ExceptionHandlerSpring extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = { CompteClientNotExistException.class })
    public ResponseEntity<ApiError>clientNotfoundExcep(CompteClientNotExistException ex){
-        return new ResponseEntity<>(new ApiError(400,ex.getMessage()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ApiError(400,ex.getMessage()),HttpStatus.NOT_FOUND);
 
     }
 
