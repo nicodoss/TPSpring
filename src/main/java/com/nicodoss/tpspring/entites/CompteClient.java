@@ -14,7 +14,7 @@ import java.util.Set;
 public class CompteClient extends Personne{
     @Column(length =20,name = "numCompte", nullable = false,updatable = false)
     private String numCompte;
-   private String intituleCompte;
+    private String intituleCompte;
     private String Abrege;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "T_CompteClientPersonne",schema = "OUVERTURE",
