@@ -2,6 +2,7 @@ package com.nicodoss.tpspring.dtos;
 
 import com.nicodoss.tpspring.entites.Adresse;
 import com.nicodoss.tpspring.entites.Personne;
+import com.nicodoss.tpspring.enums.Sexe;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class PersonnePhysiqueDto extends Personne {
     private Adresse adresse;
     private boolean estActifPersonne;
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Sexe sexe;
     private Long numLigne;
+
 
 }

@@ -1,5 +1,6 @@
 package com.nicodoss.tpspring.entites;
 
+import com.nicodoss.tpspring.enums.Sexe;
 import lombok.*;
 import org.springframework.data.relational.core.mapping.Embedded;
 
@@ -33,5 +34,7 @@ public class PersonnePhysique extends Personne{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="numLigne")
     private Long numLigne;
+    @Enumerated(EnumType.STRING)
+    private Sexe sexe;
 
 }
