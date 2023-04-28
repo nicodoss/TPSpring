@@ -32,4 +32,5 @@ public class PersonneMorale extends Personne{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="numLigne")
     private long numLigne;
+
 }

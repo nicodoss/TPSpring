@@ -4,7 +4,6 @@ import com.nicodoss.tpspring.enums.ZonePays;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 @Entity @NoArgsConstructor @AllArgsConstructor @Data
@@ -19,4 +18,6 @@ public class Pays{
     private String  indicatifReseau;
     @Enumerated(EnumType.STRING)
     private ZonePays zonePays;
+    @Version
+    private int rowversion;
 }

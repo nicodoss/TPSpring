@@ -5,6 +5,7 @@ import com.nicodoss.tpspring.enums.ZonePays;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Version;
 
 @Data @AllArgsConstructor @NoArgsConstructor
 public class PaysDto {
@@ -13,4 +14,6 @@ public class PaysDto {
     @JsonProperty("indicatif")
     private String  indicatifReseau;
     private ZonePays zonePays;
+    @Version
+    private int rowversion;
 }

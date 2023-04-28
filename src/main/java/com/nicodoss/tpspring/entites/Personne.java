@@ -19,4 +19,6 @@ public abstract class Personne {
     protected Date dateCreationServeur;
     @Enumerated(value = EnumType.STRING)
     protected TypePersonne typePersonne;
+    @Version
+    private int rowversion;
 }

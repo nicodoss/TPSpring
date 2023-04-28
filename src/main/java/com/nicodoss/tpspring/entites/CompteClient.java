@@ -5,14 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "T_CompteClient",schema = "OUVERTURE")
 @AllArgsConstructor @NoArgsConstructor @Data
 public class CompteClient extends Personne{
-    @Column(length =20,name = "numCompte", nullable = false,updatable = false)
+    @Column(length =20,name = "numCompte", nullable = false,updatable = false,unique = true)
     private String numCompte;
     private String intituleCompte;
     private String Abrege;
@@ -26,4 +25,5 @@ public class CompteClient extends Personne{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="numLigne", nullable = false,updatable = false)
     private Long numLigne;
+
 }

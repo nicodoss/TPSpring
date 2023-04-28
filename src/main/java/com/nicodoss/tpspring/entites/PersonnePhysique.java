@@ -36,4 +36,5 @@ public class PersonnePhysique extends Personne {
     private Long numLigne;
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
+
 }

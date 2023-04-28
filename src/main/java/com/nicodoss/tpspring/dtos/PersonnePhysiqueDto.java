@@ -6,8 +6,9 @@ import com.nicodoss.tpspring.enums.Sexe;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Embedded;
-import javax.persistence.*;
+
 
 import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.USE_NULL;
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -20,9 +21,10 @@ public class PersonnePhysiqueDto extends Personne {
     @Embedded(onEmpty =  USE_NULL)
     private Adresse adresse;
     private boolean estActifPersonne;
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Sexe sexe;
     private Long numLigne;
+    @Version
+    private int rowversion;
 
 
 }

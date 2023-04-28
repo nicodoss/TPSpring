@@ -3,6 +3,8 @@ import com.nicodoss.tpspring.entites.Personne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Version;
+
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -18,4 +20,7 @@ public class PersonneMoraleDto extends Personne {
     private Date dateCreationServeur;
     private String codepays;
     private long numLigne;
+    @Version
+    private int rowversion;
+
 }
