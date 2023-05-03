@@ -19,5 +19,5 @@ public class Pays{
     @Enumerated(EnumType.STRING)
     private ZonePays zonePays;
     @Version
-    private int rowversion;
+    private int rowversions;
 }

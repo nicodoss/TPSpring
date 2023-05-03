@@ -31,7 +31,7 @@ public class PersonnePhysique extends Personne {
     private Adresse adresse;
     @Column(name = "estactifPersonne")
     private boolean estActifPersonne;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "numLigne")
     private Long numLigne;
     @Enumerated(EnumType.STRING)

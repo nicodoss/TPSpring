@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @Slf4j
 @AllArgsConstructor
@@ -35,11 +35,10 @@ public class PersonneController {
         PersonnePhysiqueDto pers= personneService.SavePersonnePhysique(personne);
         return ResponseEntity.status(HttpStatus.CREATED).body(pers);
     }
+
     @PostMapping("/addPersMorale")
     public ResponseEntity<PersonneMoraleDto> CreatePersonneMorale (@RequestBody PersonneMoraleDto personne){
         PersonneMoraleDto pers=personneService.SavePersonneMorale(personne);
-//        if(pers !=null)
-//            throw Error(new P);
         return ResponseEntity.ok(pers);
     }
 

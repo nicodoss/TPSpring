@@ -4,6 +4,7 @@ import com.nicodoss.tpspring.dtos.CompteClientDto;
 import com.nicodoss.tpspring.entites.CompteClient;
 import com.nicodoss.tpspring.enums.TypePersonne;
 import com.nicodoss.tpspring.exceptions.CompteClientNotExistException;
+import com.nicodoss.tpspring.exceptions.RowsVersionsChangingExceptions;
 import com.nicodoss.tpspring.mappers.CompteClientMappers;
 import com.nicodoss.tpspring.repositories.CompteClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ import java.util.stream.Collectors;
     @Override
     public CompteClientDto UpdateCompteClients(Long id, CompteClientDto cpte) throws CompteClientNotExistException {
         CompteClient clt=compteClientRepository.findById(id).orElseThrow(()->new CompteClientNotExistException(id));
+        if(clt.getRowversions()!=cpte.getRowversions())
+        throw new RowsVersionsChangingExceptions("Client");
+
         CompteClient cltupdate =compteClientMappers.DtoToModel(cpte);
         clt.setIntituleCompte(cltupdate.getIntituleCompte());
         clt.setAbrege(cltupdate.getAbrege());

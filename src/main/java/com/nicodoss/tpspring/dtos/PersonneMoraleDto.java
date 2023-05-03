@@ -21,6 +21,6 @@ public class PersonneMoraleDto extends Personne {
     private String codepays;
     private long numLigne;
     @Version
-    private int rowversion;
+    private int rowversions;
 
 }

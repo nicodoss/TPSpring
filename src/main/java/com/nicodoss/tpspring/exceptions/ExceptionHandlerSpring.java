@@ -20,4 +20,8 @@ public class ExceptionHandlerSpring extends ResponseEntityExceptionHandler {
     public ResponseEntity<ApiError>PaysNotFoundException(PaysNotFoundException ex){
         return new ResponseEntity<>(new ApiError(400,ex.getMessage()),HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(value = {RowsVersionsChangingExceptions.class })
+    public ResponseEntity<ApiError>RowsVersionsChangingExceptions(RowsVersionsChangingExceptions ex){
+        return new ResponseEntity<>(new ApiError(409,ex.getMessage()),HttpStatus.CONFLICT);
+    }
 }

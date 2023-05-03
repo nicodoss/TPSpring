@@ -20,5 +20,5 @@ public abstract class Personne {
     @Enumerated(value = EnumType.STRING)
     protected TypePersonne typePersonne;
     @Version
-    private int rowversion;
+    private int rowversions;
 }

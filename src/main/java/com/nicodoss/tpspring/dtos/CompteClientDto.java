@@ -19,7 +19,7 @@ public class CompteClientDto {
     private  Long idPersPrincip ;
     private Long numLigne;
     @Version
-    private int rowversion;
+    private int rowversions;
 
 
 }

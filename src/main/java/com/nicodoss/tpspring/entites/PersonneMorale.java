@@ -29,7 +29,7 @@ public class PersonneMorale extends Personne{
     private Date dateCreationServeur;
     @OneToOne
     private Pays pays;
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="numLigne")
     private long numLigne;
 

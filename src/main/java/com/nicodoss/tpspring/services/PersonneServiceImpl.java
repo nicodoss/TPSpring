@@ -19,6 +19,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.nicodoss.tpspring.enums.TypePersonne.PHYSIQUE;
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -110,7 +114,7 @@ public class PersonneServiceImpl implements PersonneService{
             pers.setPrenoms(personne.getPrenoms());
             pers.setPaysNaissance(personne.getPaysNaissance());
             pers.setPaysResidence(personne.getPaysResidence());
-            pers.setTypePersonne(TypePersonne.PHYSIQUE);
+            pers.setTypePersonne(PHYSIQUE);
         }
 
         return pers;
@@ -136,7 +140,12 @@ public class PersonneServiceImpl implements PersonneService{
 
     @Override
     public List<Personne> ListePersonne(TypePersonne typePersonne) {
-        return personneRepository.findByTypePersonne(typePersonne);
+        switch (typePersonne) {
+            case PHYSIQUE:
+            return  personneRepository.findByTypePersonne(typePersonne).stream().map((element)->personnePhysMappers.ModelToDto((PersonnePhysique) element)).collect(Collectors.toList());
+            default:
+                return personneRepository.findByTypePersonne(typePersonne).stream().map((element)->persMorMappers.ModelToDtos((PersonneMorale) element)).collect(Collectors.toList());
+        }
     }
     @Override
     public List<Personne> ListePersonneAll() {

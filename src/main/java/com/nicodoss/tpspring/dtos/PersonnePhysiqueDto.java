@@ -24,7 +24,7 @@ public class PersonnePhysiqueDto extends Personne {
     private Sexe sexe;
     private Long numLigne;
     @Version
-    private int rowversion;
+    private int rowversions;
 
 
 }

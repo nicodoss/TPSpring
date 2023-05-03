@@ -15,5 +15,5 @@ public class PaysDto {
     private String  indicatifReseau;
     private ZonePays zonePays;
     @Version
-    private int rowversion;
+    private int rowversions;
 }
