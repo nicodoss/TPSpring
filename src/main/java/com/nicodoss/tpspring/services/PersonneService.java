@@ -22,4 +22,5 @@ public interface PersonneService {
   List<Personne>ListePersonne(TypePersonne typePersonne);
   List<Personne>ListePersonneAll();
   Personne FindById(Long Id);
+  List<PersonnePhysiqueDto>ListePersonnePhysique();
 }

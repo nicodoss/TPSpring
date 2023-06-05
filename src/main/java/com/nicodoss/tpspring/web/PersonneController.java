@@ -26,8 +26,8 @@ public class PersonneController {
     private PersonneService personneService;
 
     @GetMapping(path = "/personnesphys")
-    public List<Personne>ListePersonnePhysique( ){
-       return   personneService.ListePersonne(TypePersonne.PHYSIQUE);
+    public List<PersonnePhysiqueDto>ListePersonnePhysique( ){
+       return   personneService.ListePersonnePhysique();
     }
 
     @PostMapping("/addPersPhys")

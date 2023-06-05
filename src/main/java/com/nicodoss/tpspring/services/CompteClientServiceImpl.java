@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-    public class CompteClientServiceImpl implements CompteClientService{
+public class CompteClientServiceImpl implements CompteClientService {
     @Autowired
     private CompteClientRepository compteClientRepository;
     @Autowired
@@ -23,42 +23,41 @@ import java.util.stream.Collectors;
 
     @Override
     public CompteClientDto CreateCompteClient(CompteClientDto cpt) {
-        CompteClient cptclient=compteClientMappers.DtoToModel(cpt);
+        CompteClient cptclient = compteClientMappers.DtoToModel(cpt);
         compteClientRepository.save(cptclient);
         return cpt;
     }
 
     @Override
     public List<CompteClientDto> getAllCompteClients() {
-        List<CompteClientDto> lstCpte=new ArrayList<>();
-        lstCpte=compteClientRepository.findAll().stream().map((element)->compteClientMappers.ModelToDto(element)).collect(Collectors.toList());
+        List<CompteClientDto> lstCpte = new ArrayList<>();
+        lstCpte = compteClientRepository.findAll().stream().map((element) -> compteClientMappers.ModelToDto(element)).collect(Collectors.toList());
         return lstCpte;
     }
 
     @Override
     public List<CompteClientDto> getComptesByTypePersonnes(TypePersonne typePersonne) {
-        List<CompteClientDto> lstCpte=new ArrayList<>();
-        lstCpte=compteClientRepository.FindCompteByTypePers(typePersonne).stream().map((element)->compteClientMappers.ModelToDto(element)).collect(Collectors.toList());
+        List<CompteClientDto> lstCpte = new ArrayList<>();
+        lstCpte = compteClientRepository.FindCompteByTypePers(typePersonne).stream().map((element) -> compteClientMappers.ModelToDto(element)).collect(Collectors.toList());
         return lstCpte;
     }
 
     @Override
     public CompteClientDto getCompteClientById(Long id) throws CompteClientNotExistException {
-        return compteClientMappers.ModelToDto(compteClientRepository.findById(id).orElseThrow(()->new CompteClientNotExistException(id) ));
+        return compteClientMappers.ModelToDto(compteClientRepository.findById(id).orElseThrow(() -> new CompteClientNotExistException(id)));
     }
 
     @Override
     public CompteClientDto UpdateCompteClients(Long id, CompteClientDto cpte) throws CompteClientNotExistException {
-        CompteClient clt=compteClientRepository.findById(id).orElseThrow(()->new CompteClientNotExistException(id));
-        if(clt.getRowversions()!=cpte.getRowversions())
-        throw new RowsVersionsChangingExceptions("Client");
+        CompteClient clt = compteClientRepository.findById(id).orElseThrow(() -> new CompteClientNotExistException(id));
+        if (clt.getRowversions() != cpte.getRowversions())
+            throw new RowsVersionsChangingExceptions("Client");
 
-        CompteClient cltupdate =compteClientMappers.DtoToModel(cpte);
+        CompteClient cltupdate = compteClientMappers.DtoToModel(cpte);
         clt.setIntituleCompte(cltupdate.getIntituleCompte());
         clt.setAbrege(cltupdate.getAbrege());
         clt.setListePersonne(cltupdate.getListePersonne());
-        clt.setTypePersonne(cltupdate.getTypePersonne());
-       return compteClientMappers.ModelToDto(compteClientRepository.save(clt));
+        return compteClientMappers.ModelToDto(compteClientRepository.save(clt));
 
     }
 

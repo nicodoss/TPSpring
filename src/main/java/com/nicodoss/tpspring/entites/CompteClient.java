@@ -10,7 +10,10 @@ import java.util.Set;
 @Entity
 @Table(name = "T_CompteClient",schema = "OUVERTURE")
 @AllArgsConstructor @NoArgsConstructor @Data
-public class CompteClient extends Personne{
+public class CompteClient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    protected Long id ;
     @Column(length =20,name = "numCompte", nullable = false,updatable = false,unique = true)
     private String numCompte;
     private String intituleCompte;
@@ -25,5 +28,6 @@ public class CompteClient extends Personne{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="numLigne", nullable = false,updatable = false)
     private Long numLigne;
-
+    @Version
+    private int rowversions;
 }

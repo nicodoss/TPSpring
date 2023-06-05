@@ -156,4 +156,9 @@ public class PersonneServiceImpl implements PersonneService{
     public Personne FindById(Long Id) {
         return personneRepository.findById(Id).orElse(null);
     }
+
+    @Override
+    public List<PersonnePhysiqueDto> ListePersonnePhysique() {
+        return personnePhysiqueRepository.findAll().stream().map(elt->personnePhysMappers.ModelToDto(elt)).collect(Collectors.toList());
+    }
 }
