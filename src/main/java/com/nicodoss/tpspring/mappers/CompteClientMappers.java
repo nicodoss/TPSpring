@@ -1,23 +1,16 @@
 package com.nicodoss.tpspring.mappers;
-
 import com.nicodoss.tpspring.SpringApplicationContextProvider;
 import com.nicodoss.tpspring.dtos.CompteClientDto;
-import com.nicodoss.tpspring.dtos.PersonneMoraleDto;
-import com.nicodoss.tpspring.dtos.PersonnePhysiqueDto;
 import com.nicodoss.tpspring.entites.CompteClient;
 import com.nicodoss.tpspring.entites.Personne;
-import com.nicodoss.tpspring.entites.PersonneMorale;
-import com.nicodoss.tpspring.entites.PersonnePhysique;
 import com.nicodoss.tpspring.exceptions.PersonneNotExistException;
 import com.nicodoss.tpspring.repositories.PersonneMoraleRepository;
 import com.nicodoss.tpspring.repositories.PersonnePhysiqueRepository;
 import com.nicodoss.tpspring.repositories.PersonneRepository;
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.context.ApplicationContext;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,11 +20,7 @@ public interface CompteClientMappers {
  @Mapping(source ="clt.listePersonne",target="listePersonne",qualifiedByName = "mapPersonneSetToIdSet")
  CompteClientDto ModelToDto(CompteClient clt);
  ApplicationContext context= SpringApplicationContextProvider.getApplicationContext();
-
- PersonnePhysiqueRepository persphysRep=context.getBean(PersonnePhysiqueRepository.class);
- PersonneMoraleRepository persMorRep=context.getBean(PersonneMoraleRepository.class);
  PersonneRepository pers=context.getBean(PersonneRepository.class);
-
  Set<Personne>listePersonne=new HashSet<>();
  @Named("listepersonneByID")
  default  Set <Personne>mapPersonneIDToPersonne(Set<Long> ids) throws PersonneNotExistException {

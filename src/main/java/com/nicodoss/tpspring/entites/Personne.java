@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "Type_Pers",length = 8)
@@ -21,4 +22,6 @@ public abstract class Personne {
     protected TypePersonne typePersonne;
     @Version
     private int rowversions;
+    @OneToMany(mappedBy ="personne" )
+    private List<Adresse> adresse;
 }

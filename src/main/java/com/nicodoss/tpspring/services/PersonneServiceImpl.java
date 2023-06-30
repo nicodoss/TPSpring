@@ -140,13 +140,18 @@ public class PersonneServiceImpl implements PersonneService{
 
     @Override
     public List<Personne> ListePersonne(TypePersonne typePersonne) {
+        return null;
+    }
+
+    /*@Override
+    public List<Personne> ListePersonne(TypePersonne typePersonne) {
         switch (typePersonne) {
             case PHYSIQUE:
             return  personneRepository.findByTypePersonne(typePersonne).stream().map((element)->personnePhysMappers.ModelToDto((PersonnePhysique) element)).collect(Collectors.toList());
             default:
                 return personneRepository.findByTypePersonne(typePersonne).stream().map((element)->persMorMappers.ModelToDtos((PersonneMorale) element)).collect(Collectors.toList());
         }
-    }
+    }*/
     @Override
     public List<Personne> ListePersonneAll() {
         return personneRepository.findAll();

@@ -5,12 +5,8 @@ import com.nicodoss.tpspring.dtos.PersonnePhysiqueDto;
 import com.nicodoss.tpspring.entites.Pays;
 import com.nicodoss.tpspring.entites.PersonnePhysique;
 import com.nicodoss.tpspring.repositories.PaysRepository;
-import com.nicodoss.tpspring.repositories.PersonnePhysiqueRepository;
-import lombok.Data;
-import lombok.Setter;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 @Mapper(componentModel = "spring")
@@ -23,6 +19,7 @@ public interface PersonnePhysMappers {
     @Named("codePaysToPaysNaissance")
     default Pays codePaysToPaysNaissance(String codePays)
     {
+        System.out.println(codePays);
         ApplicationContext context= SpringApplicationContextProvider.getApplicationContext();;
         PaysRepository paysRepository=context.getBean(PaysRepository.class);
         return paysRepository.findById(codePays).orElseThrow(null);

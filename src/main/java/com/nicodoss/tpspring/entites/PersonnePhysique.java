@@ -6,6 +6,8 @@ import org.springframework.data.relational.core.mapping.Embedded;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.USE_NULL;
 
 @Table(name="T_PersonnePhysique",schema = "OUVERTURE")
@@ -27,8 +29,8 @@ public class PersonnePhysique extends Personne {
     private Pays paysResidence;
     @Column(name = "lieu_naissance", length = 50)
     private String lieuNaissance;
-    @Embedded(onEmpty = USE_NULL)
-    private Adresse adresse;
+    @OneToMany
+    private List<Adresse> adresse;
     @Column(name = "estactifPersonne")
     private boolean estActifPersonne;
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,5 +38,4 @@ public class PersonnePhysique extends Personne {
     private Long numLigne;
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
-
 }
