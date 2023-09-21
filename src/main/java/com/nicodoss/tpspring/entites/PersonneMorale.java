@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 @Entity
 @NoArgsConstructor @AllArgsConstructor @Data
 @Table(name="T_PersonneMorale",schema = "OUVERTURE")
 @DiscriminatorValue("PM")
-public class PersonneMorale extends Personne{
+public class PersonneMorale extends Personne implements Serializable {
     @Column(length = 100)
     private String numeroAgrement;
     @Column(length = 100)

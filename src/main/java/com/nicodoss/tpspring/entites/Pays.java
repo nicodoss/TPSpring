@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity @NoArgsConstructor @AllArgsConstructor @Data
 @Table(name="T_Pays",schema = "OUVERTURE")
-public class Pays{
+public class Pays implements Serializable {
     @Id
     @Column(name="codePays",length = 20)
     private String codePays;

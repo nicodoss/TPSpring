@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface PersonneRepository extends JpaRepository<Personne,Long> {
 List<Personne>findByTypePersonne(TypePersonne type);
-@Query("select p from Personne p where p.id =:adresseId" )
+@Query("select p from Personne p where p.id =:adresseId")
 Personne getPersonneByAdresseId(@Param("adresseId") Long Id);
 }

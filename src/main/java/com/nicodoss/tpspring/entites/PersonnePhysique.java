@@ -29,7 +29,7 @@ public class PersonnePhysique extends Personne {
     private Pays paysResidence;
     @Column(name = "lieu_naissance", length = 50)
     private String lieuNaissance;
-    @OneToMany
+    @OneToMany()
     private List<Adresse> adresse;
     @Column(name = "estactifPersonne")
     private boolean estActifPersonne;
@@ -38,4 +38,5 @@ public class PersonnePhysique extends Personne {
     private Long numLigne;
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
+    
 }

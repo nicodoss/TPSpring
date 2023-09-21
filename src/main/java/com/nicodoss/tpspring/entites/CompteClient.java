@@ -5,12 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "T_CompteClient",schema = "OUVERTURE")
 @AllArgsConstructor @NoArgsConstructor @Data
-public class CompteClient {
+public class CompteClient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     protected Long id ;

@@ -1,8 +1,7 @@
 package com.nicodoss.tpspring.dtos;
 
-import com.nicodoss.tpspring.entites.Adresse;
-import com.nicodoss.tpspring.entites.Personne;
 import com.nicodoss.tpspring.enums.Sexe;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ public class PersonnePhysiqueDto{
     private boolean estActifPersonne;
     private Sexe sexe;
     private Long numLigne;
-    private AdresseDto adresseDto;
+    private List<AdresseDto> adresseDto;
     @Version
     private int rowversions;
 

@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
 @Table(name="T_Adresse",schema = "OUVERTURE")
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Adresse {
+public class Adresse implements Serializable {
 @Id
 private Long id;
 private String boitePostale;

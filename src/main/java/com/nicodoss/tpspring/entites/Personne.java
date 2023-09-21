@@ -10,13 +10,14 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "Type_Pers",length = 8)
 @NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public abstract class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    protected Long id ;
+    protected Long id;
     protected Date dateCreationServeur;
     @Enumerated(value = EnumType.STRING)
     protected TypePersonne typePersonne;

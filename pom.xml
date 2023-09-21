@@ -84,7 +84,7 @@
                         </exclude>
                     </excludes>
                 </configuration>
-            </plugin>
+            </plugin>          
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -109,9 +109,7 @@
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
-                            <version>${org.mapstruct.version}</version>
-
-                        </path>
+                            <version>${org.mapstruct.version}</version>                        </path>
 
                         <!-- other annotation processors -->
                     </annotationProcessorPaths>
