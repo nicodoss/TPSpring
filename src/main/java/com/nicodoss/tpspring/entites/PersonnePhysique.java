@@ -2,14 +2,8 @@ package com.nicodoss.tpspring.entites;
 
 import com.nicodoss.tpspring.enums.Sexe;
 import lombok.*;
-import org.springframework.data.relational.core.mapping.Embedded;
-
 import javax.persistence.*;
-
 import java.util.List;
-
-import static org.springframework.data.relational.core.mapping.Embedded.OnEmpty.USE_NULL;
-
 @Table(name="T_PersonnePhysique",schema = "OUVERTURE")
 @Entity
 @NoArgsConstructor

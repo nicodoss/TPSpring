@@ -16,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 public interface AdresseMappers {
     AdresseMappers INSTANCE= Mappers.getMapper(AdresseMappers.class);
     AdresseDto ModelToDto(Adresse adresse);
-    @Mapping(source = "adresseDto.idPersonne",target = "personne", qualifiedByName = "PersonneByAdresseId")
+    @Mapping(source = "idPersonne",target = "personne", qualifiedByName = "PersonneByAdresseId")
     Adresse DtoToModel(AdresseDto adresseDto);
     
     ApplicationContext context= SpringApplicationContextProvider.getApplicationContext();

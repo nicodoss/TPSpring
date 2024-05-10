@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Version;
 @Data @AllArgsConstructor @NoArgsConstructor
-public class PersonnePhysiqueDto{
+public class PersonnePhysiqueDto extends PersonneDTO{
     private String nom;
     private String prenoms;
     private String codePaysNaissance;
@@ -16,7 +16,6 @@ public class PersonnePhysiqueDto{
     private boolean estActifPersonne;
     private Sexe sexe;
     private Long numLigne;
-    private List<AdresseDto> adresseDto;
     @Version
     private int rowversions;
 

@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Version;
 import java.util.Date;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class PersonneMoraleDto extends Personne {
+public class PersonneMoraleDto extends PersonneDTO {
     private String numeroAgrement;
     private String numeroInsae;
     private long capitalSocial;

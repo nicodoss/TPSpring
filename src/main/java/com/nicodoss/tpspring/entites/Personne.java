@@ -25,4 +25,6 @@ public abstract class Personne {
     private int rowversions;
     @OneToMany(mappedBy ="personne" )
     private List<Adresse> adresse;
+    @OneToMany(mappedBy ="personne" )
+    private List<Pieces>pieces;
 }

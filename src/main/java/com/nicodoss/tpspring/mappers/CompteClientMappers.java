@@ -16,8 +16,8 @@ import java.util.Set;
 
 @Mapper(componentModel = "spring")
 public interface CompteClientMappers {
- @Mapping(source = "clt.personne.id", target = "idPersPrincip")
- @Mapping(source ="clt.listePersonne",target="listePersonne",qualifiedByName = "mapPersonneSetToIdSet")
+ @Mapping(source = "personne.id", target = "idPersPrincip")
+ @Mapping(source ="listePersonne",target="listePersonne",qualifiedByName = "mapPersonneSetToIdSet")
  CompteClientDto ModelToDto(CompteClient clt);
  ApplicationContext context= SpringApplicationContextProvider.getApplicationContext();
  PersonneRepository pers=context.getBean(PersonneRepository.class);
@@ -37,6 +37,6 @@ public interface CompteClientMappers {
   }
   return ids;
  }
- @Mapping(source ="clt.listePersonne",target="listePersonne",qualifiedByName = "listepersonneByID")
+ @Mapping(source ="listePersonne",target="listePersonne",qualifiedByName = "listepersonneByID")
  CompteClient DtoToModel(CompteClientDto clt);
 }

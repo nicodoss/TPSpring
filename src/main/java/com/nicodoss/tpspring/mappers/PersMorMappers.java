@@ -12,7 +12,7 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.ApplicationContext;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",uses = {PiecesMapper.class})
 public interface PersMorMappers {
     PersMorMappers INSTANCE= Mappers.getMapper(PersMorMappers.class);
     @Named("PaysById")
